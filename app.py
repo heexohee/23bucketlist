@@ -1,3 +1,6 @@
+# Flask 웹 애플리케이션을 구성하는 코드입니다. 
+# 이 코드는 웹 서버를 실행하고, 클라이언트로부터 HTTP 요청을 받으면 해당 요청에 대한 응답을 반환합니다.
+
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
