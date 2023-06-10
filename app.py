@@ -56,6 +56,13 @@ def bucket_get():
     return jsonify({'buckets': bucket_list}) 
 # 버킷 리스트를 반환하는 코드
 
+@app.route("/bucket/reset", methods=["POST"])
+def bucket_reset():
+    num_receive = request.form['num_give']
+
+    db.bucket.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
+
+    return jsonify({'msg': '버킷 상태를 리셋했습니다.'})
 
 if __name__ == '__main__':
    app.run('0.0.0.0', port=5000, debug=True)

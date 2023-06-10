@@ -50,11 +50,13 @@
         }
 
         .mybucket {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
+        display: flex;
+        align-items: center;
+    }
+
+    .mybucket .btn {
+        margin-left: 10px;
+    }
 
         .mybucket > input {
             width: 70%;
@@ -77,6 +79,13 @@
             margin-right: auto;
             margin-bottom: 0px;
         }
+
+
+    #footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #777;
+    }
     </style>
     
     <script>
@@ -161,6 +170,19 @@
                 }
             });
         }
+
+        function reset_bucket(num) {
+    $.ajax({
+        type: "POST",
+        url: "/bucket/reset",
+        data: {num_give: num},
+        success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+        }
+    });
+}
+
     </script>
     
 </head>
@@ -172,7 +194,8 @@
     <div class="mybucket">
         <input id="bucket" class="form-control" type="text" placeholder="What's Your Bucket-List For 2023?">
         <button onclick="save_bucket()" type="button" class="btn btn-outline-primary">기록하기</button>
-    </div>
+        <button onclick="reset_bucket()" type="button" class="btn btn-outline-secondary reset-button">리셋</button>
+    </div>    
 </div>
 <div class="mybox" id="bucket-list">
     <!-- 서버에서 동적으로 생성되는 버킷 리스트가 여기에 추가됩니다. -->
@@ -184,7 +207,9 @@
         <h2>✅ 탈주닌자🥷❌</h2>
         <button onclick="done_bucket(5)" type="button" class="btn btn-outline-primary">완료!</button>
     </li>
-   
+    <div class="mybox" id="footer">
+        <p>&copy; 2023 소희의 2023 Bucket List. All rights reserved.</p>
+    </div>
 </div>
 </body>
 </html>
