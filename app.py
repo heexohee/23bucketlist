@@ -32,7 +32,8 @@ def bucket_post():
 
     db.bucket.insert_one(doc)
 
-    return jsonify({'msg': '버킷 기록 했음!!!'}) # 버킷 기록을 처리하는 코드
+    return jsonify({'msg': '버킷 기록 했음!!!'}) 
+# 버킷 기록을 처리하는 코드
 
 
 @app.route("/bucket/done", methods=["POST"])
@@ -43,7 +44,8 @@ def bucket_done():
     db.bucket.update_one({'num': int(num_receive)}, {'$set': {'done': 1}})
 
 
-    return jsonify({'msg': '버킷을 달성! ㅊㅊ'})# 버킷 완료를 처리하는 코드
+    return jsonify({'msg': '버킷을 달성! ㅊㅊ'})
+# 버킷 완료를 처리하는 코드
 
 
 @app.route("/bucket", methods=["GET"])
@@ -51,7 +53,8 @@ def bucket_done():
 def bucket_get():
     bucket_list = list(db.bucket.find({}, {'_id': False}))
 
-    return jsonify({'buckets': bucket_list}) # 버킷 리스트를 반환하는 코드
+    return jsonify({'buckets': bucket_list}) 
+# 버킷 리스트를 반환하는 코드
 
 
 if __name__ == '__main__':
