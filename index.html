@@ -115,14 +115,14 @@
                         }
 
                         $('#bucket-list').append(temp_html)
-
+                        // 동적으로 생성한 HTML을 버킷 리스트에 추가합니다.
                     }
 
 
                 }
             });
         }
-
+        // 입력된 버킷을 가져와서 서버에 POST 요청을 보내는 함수.
         function save_bucket() {
             let bucket = $('#bucket').val()
 
@@ -136,7 +136,8 @@
                 }
             });
         }
-
+        
+        // 버킷의 완료 상태를 서버에 POST 요청으로 보내는 함수.
         function done_bucket(num) {
             $.ajax({
                 type: "POST",
@@ -160,13 +161,8 @@
                 }
             });
         }
-
-
-
-
-
-
     </script>
+    
 </head>
 <body>
 <div class="mypic">
@@ -179,6 +175,7 @@
     </div>
 </div>
 <div class="mybox" id="bucket-list">
+    <!-- 서버에서 동적으로 생성되는 버킷 리스트가 여기에 추가됩니다. -->
     <li>
         <h2>✅ 락페가기(락윌네버다이🎸)</h2>
         <button onclick="done_bucket(5)" type="button" class="btn btn-outline-primary">완료!</button>
